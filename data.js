@@ -237,3 +237,11 @@ const COMILLAS = new Set([
   "Uni Fribourg", "Uni Lausanne", "Uni Luzern"
 ]);
 data.forEach(d => { d.comillas = COMILLAS.has(d.university); });
+
+// UC3M plazas: whole university and whole city (see uc3m-plazas.js)
+data.forEach(d => {
+  const u = UC3M[d.university];
+  d.plazasUni = u.uni;
+  d.plazasCity = u.cityTotal;
+  d.cityKey = u.city;
+});

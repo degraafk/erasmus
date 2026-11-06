@@ -92,7 +92,9 @@ function render() {
       <td>${d.city}</td>
       <td><strong>${d.university}</strong>${d.cunef ? ' <span class="tag-cunef">CUNEF</span>' : ''}${d.comillas ? ' <span class="tag-comillas">Comillas</span>' : ''}</td>
       <td><span class="badge badge-${d.fieldClass}">${d.field}</span></td>
-      <td class="num">${d.plazas}</td>
+      <td class="num plz-entry">${d.plazas}</td>
+      <td class="num plz-uni" title="All UC3M plazas at ${d.university} (every degree)">${d.plazasUni}</td>
+      <td class="num plz-city" title="All UC3M plazas in ${d.cityKey} (every university and degree)">${d.plazasCity}</td>
       <td class="num">${d.meses}</td>
       <td>${ratingBars(d.lifestyle)}</td>
       <td>${ratingBars(d.size)}</td>

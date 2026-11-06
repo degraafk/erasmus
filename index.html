@@ -33,25 +33,30 @@
       </div>
     </div>
 
-    <p class="note">Overall = (Lifestyle + Size + City life + (6 − Difficulty) + Prestige) / 5. Less difficult counts as better. Rank is out of all destinations.</p>
+    <p class="note">Overall = (Lifestyle + Size + City life + (6 − Difficulty) + Prestige) / 5. Less difficult counts as better. Rank is out of all destinations.<br>Plazas: <b>Entry</b> = this row (field and duration), <b>University</b> = all UC3M degrees at that university, <b>City</b> = all UC3M degrees at every university in the same city (city taken from the university code, Anexo 1 Erasmus 2026-27).</p>
 
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
-            <th data-key="country">Country <span class="sort-icon">↕</span></th>
-            <th data-key="city">City <span class="sort-icon">↕</span></th>
-            <th data-key="university">University <span class="sort-icon">↕</span></th>
-            <th data-key="field">Field <span class="sort-icon">↕</span></th>
-            <th data-key="plazas">Plazas <span class="sort-icon">↕</span></th>
-            <th data-key="meses">Meses <span class="sort-icon">↕</span></th>
-            <th data-key="lifestyle">Lifestyle <span class="sort-icon">↕</span></th>
-            <th data-key="size">Size <span class="sort-icon">↕</span></th>
-            <th data-key="citylife">City life <span class="sort-icon">↕</span></th>
-            <th data-key="difficulty">Difficulty <span class="sort-icon">↕</span></th>
-            <th data-key="prestige">Prestige <span class="sort-icon">↕</span></th>
-            <th data-key="overall">Overall <span class="sort-icon">↕</span></th>
-            <th data-key="nivel">Nivel <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="country">Country <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="city">City <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="university">University <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="field">Field <span class="sort-icon">↕</span></th>
+            <th colspan="3" class="group">Plazas</th>
+            <th rowspan="2" data-key="meses">Meses <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="lifestyle">Lifestyle <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="size">Size <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="citylife">City life <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="difficulty">Difficulty <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="prestige">Prestige <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="overall">Overall <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="nivel">Nivel <span class="sort-icon">↕</span></th>
+          </tr>
+          <tr class="subhead">
+            <th data-key="plazas" title="Plazas for this exact entry (field and duration)">Entry <span class="sort-icon">↕</span></th>
+            <th data-key="plazasUni" title="All UC3M plazas at this university, every degree">University <span class="sort-icon">↕</span></th>
+            <th data-key="plazasCity" title="All UC3M plazas in this city, every university and degree">City <span class="sort-icon">↕</span></th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -60,6 +65,7 @@
     </div>
   </div>
 
+  <script src="uc3m-plazas.js"></script>
   <script src="data.js"></script>
   <script src="script.js"></script>
 </body>

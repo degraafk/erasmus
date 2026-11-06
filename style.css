@@ -87,7 +87,7 @@ header p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.25rem; }
   overflow-x: auto;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 1250px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 1400px; }
 thead { background: #f1f5f9; position: sticky; top: 0; z-index: 10; }
 th {
   text-align: left;
@@ -175,3 +175,20 @@ tbody tr:last-child td { border-bottom: none; }
   letter-spacing: 0.03em;
   vertical-align: middle;
 }
+
+/* Plazas group header + columns */
+thead th.group {
+  text-align: center;
+  cursor: default;
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  color: var(--text);
+}
+thead th.group:hover { color: var(--text); }
+thead tr.subhead th { font-size: 0.65rem; padding: 0.45rem 0.7rem; }
+thead tr.subhead th:first-child { border-left: 1px solid var(--border); }
+thead tr.subhead th:last-child { border-right: 1px solid var(--border); }
+td.plz-entry { border-left: 1px solid var(--border); }
+td.plz-city { border-right: 1px solid var(--border); }
+td.plz-uni, td.plz-city { background: #f8fafc; color: #475569; }
