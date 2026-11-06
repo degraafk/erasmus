@@ -204,9 +204,9 @@ for (const [country, rows] of Object.entries(RAW)) {
   }
 }
 
-// Overall score: difficulty is inverted (less difficult = better)
+// Overall score: average of lifestyle, city life, prestige and inverted difficulty (size is not included)
 data.forEach(d => {
-  d.overall = Math.round(((d.lifestyle + d.size + d.citylife + (6 - d.difficulty) + d.prestige) / 5) * 100) / 100;
+  d.overall = Math.round(((d.lifestyle + d.citylife + (6 - d.difficulty) + d.prestige) / 4) * 100) / 100;
 });
 const sortedScores = data.map(d => d.overall).sort((a, b) => b - a);
 data.forEach(d => { d.rank = sortedScores.indexOf(d.overall) + 1; }); // ties share the same rank
