@@ -218,3 +218,22 @@ const CUNEF = new Set([
   "Toulouse Capitole", "Aix-Marseille", "EBS", "WWU Münster"
 ]);
 data.forEach(d => { d.cunef = CUNEF.has(d.university); });
+
+// Universities that are also Comillas partners (shows a yellow Comillas tag)
+const COMILLAS = new Set([
+  "RWTH Aachen", "Uni Freiburg", "Uni Konstanz", "UoC (Köln)", "TUM", "WWU Münster",
+  "Uni Graz", "Uni Wien", "WU Wien",
+  "ULB", "UCLouvain",
+  "CBS", "SDU",
+  "Aix-Marseille", "Uni Lille", "Univ. Catholique Lille", "Paris Nanterre", "Paris-Saclay", "Toulouse Capitole", "UVSQ",
+  "Trinity College Dublin", "UCD",
+  "Uni Bologna", "Cattolica Milano", "UniModena", "Uni Padova", "Uni Parma", "Uni Pavia", "Uni Pisa", "LUISS", "LUMSA", "Sapienza", "Uni Trieste",
+  "UvA", "EUR (Erasmus)", "Tilburg Uni",
+  "Uni Białystok", "Kozminski",
+  "Uni Coimbra", "Católica Lisbon / Porto", "NOVA Lisbon", "Uni Porto",
+  "Bristol Uni", "Coventry Uni", "Warwick", "Heriot-Watt", "Kingston Uni", "UCL",
+  "Masaryk Uni", "Charles Uni",
+  "Örebro Uni",
+  "Uni Fribourg", "Uni Lausanne", "Uni Luzern"
+]);
+data.forEach(d => { d.comillas = COMILLAS.has(d.university); });

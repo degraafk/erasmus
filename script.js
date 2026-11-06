@@ -90,7 +90,7 @@ function render() {
     <tr>
       <td><div class="country-cell"><span class="flag">${d.flag}</span><span>${d.country}</span></div></td>
       <td>${d.city}</td>
-      <td><strong>${d.university}</strong>${d.cunef ? ' <span class="tag-cunef">CUNEF</span>' : ''}</td>
+      <td><strong>${d.university}</strong>${d.cunef ? ' <span class="tag-cunef">CUNEF</span>' : ''}${d.comillas ? ' <span class="tag-comillas">Comillas</span>' : ''}</td>
       <td><span class="badge badge-${d.fieldClass}">${d.field}</span></td>
       <td class="num">${d.plazas}</td>
       <td class="num">${d.meses}</td>
