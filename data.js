@@ -210,3 +210,11 @@ data.forEach(d => {
 });
 const sortedScores = data.map(d => d.overall).sort((a, b) => b - a);
 data.forEach(d => { d.rank = sortedScores.indexOf(d.overall) + 1; }); // ties share the same rank
+
+// Universities with a CUNEF agreement (shows an orange CUNEF tag)
+const CUNEF = new Set([
+  "Uni Pavia", "Uni Firenze", "Cattolica Milano", "Roma Tre", "Uni Pisa", "Kozminski",
+  "VMU", "UCD", "Linköping Uni", "Univ. Catholique Lille", "Uni Bordeaux",
+  "Toulouse Capitole", "Aix-Marseille", "EBS", "WWU Münster"
+]);
+data.forEach(d => { d.cunef = CUNEF.has(d.university); });
