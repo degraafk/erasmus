@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange Destinations</title>
+<link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+  <header>
+    <h1>Exchange Destinations</h1>
+    <p>Derecho &amp; Economía — ratings re-researched Nov 2026 (QS/THE 2026, enrollment data, Erasmus city rankings, forums)</p>
+  </header>
+
+  <div class="container">
+    <div class="filters">
+      <div class="filter-group">
+        <label for="search">Search</label>
+        <input type="text" id="search" placeholder="University, city, country...">
+      </div>
+      <div class="filter-group">
+        <label>Field <button class="clear-btn" onclick="clearSlicer('field')">Clear</button></label>
+        <div class="slicer" id="slicer-field"></div>
+      </div>
+      <div class="filter-group">
+        <label>Country <button class="clear-btn" onclick="clearSlicer('country')">Clear</button></label>
+        <div class="slicer" id="slicer-country"></div>
+      </div>
+      <div class="filter-group">
+        <label>Duration <button class="clear-btn" onclick="clearSlicer('meses')">Clear</button></label>
+        <div class="slicer" id="slicer-meses"></div>
+      </div>
+    </div>
+
+    <p class="note">Overall = (Lifestyle + Size + City life + (6 − Difficulty) + Prestige) / 5. Less difficult counts as better. Rank is out of all destinations.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-key="country">Country <span class="sort-icon">↕</span></th>
+            <th data-key="city">City <span class="sort-icon">↕</span></th>
+            <th data-key="university">University <span class="sort-icon">↕</span></th>
+            <th data-key="field">Field <span class="sort-icon">↕</span></th>
+            <th data-key="plazas">Plazas <span class="sort-icon">↕</span></th>
+            <th data-key="meses">Meses <span class="sort-icon">↕</span></th>
+            <th data-key="lifestyle">Lifestyle <span class="sort-icon">↕</span></th>
+            <th data-key="size">Size <span class="sort-icon">↕</span></th>
+            <th data-key="citylife">City life <span class="sort-icon">↕</span></th>
+            <th data-key="difficulty">Difficulty <span class="sort-icon">↕</span></th>
+            <th data-key="prestige">Prestige <span class="sort-icon">↕</span></th>
+            <th data-key="overall">Overall <span class="sort-icon">↕</span></th>
+            <th data-key="nivel">Nivel <span class="sort-icon">↕</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="empty" class="empty" style="display:none">No matching destinations</div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
