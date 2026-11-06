@@ -24,10 +24,14 @@
       <button class="link-btn" onclick="clearAll()">Reset</button>
     </section>
 
-    <details class="countries">
-      <summary>Country <span id="country-count"></span></summary>
-      <div class="slicer" id="slicer-country"></div>
-    </details>
+    <div class="countries" id="countries">
+      <button class="countries-toggle" type="button" aria-expanded="false" aria-controls="countries-body">
+        <span class="chev">▸</span> Country <span id="country-count"></span>
+      </button>
+      <div class="countries-body" id="countries-body">
+        <div class="countries-inner"><div class="slicer" id="slicer-country"></div></div>
+      </div>
+    </div>
 
     <p class="count" id="count"></p>
 

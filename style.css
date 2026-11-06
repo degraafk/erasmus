@@ -55,13 +55,6 @@ input[type="search"]:focus { outline: none; border-color: var(--blue); box-shado
 .link-btn { background: none; border: none; font: inherit; font-size: 0.8rem; color: var(--blue); cursor: pointer; padding: 0.2rem; }
 .link-btn:hover { text-decoration: underline; }
 
-.countries { margin-top: 0.9rem; }
-.countries summary { cursor: pointer; list-style: none; display: inline-flex; gap: 0.4rem; align-items: center; }
-.countries summary::-webkit-details-marker { display: none; }
-.countries summary::before { content: "▸"; font-size: 0.7rem; }
-.countries[open] summary::before { content: "▾"; }
-.countries .slicer { margin-top: 0.6rem; }
-#country-count { color: var(--blue); }
 
 .count { font-size: 0.78rem; color: var(--muted); margin: 1rem 0 0.5rem; }
 
@@ -137,4 +130,77 @@ footer b { color: var(--text); font-weight: 600; }
   .wrap { padding: 0 1rem; }
   h1 { font-size: 1.7rem; }
   .top { padding-top: 1.75rem; }
+}
+
+/* ---------- Motion ---------- */
+:root { --ease: cubic-bezier(0.2, 0.7, 0.2, 1); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } }
+@keyframes rowIn  { from { opacity: 0; transform: translateY(6px); } }
+@keyframes barIn  { from { transform: scaleY(0.2); opacity: 0; } }
+@keyframes tick   { 0% { opacity: 0.35; transform: translateY(2px); } 100% { opacity: 1; transform: none; } }
+
+/* Page load */
+.top .eyebrow, .top h1, .top .lede, .toolbar, .countries-toggle, .table-wrap {
+  animation: fadeUp 0.6s var(--ease) backwards;
+}
+.top .eyebrow { animation-delay: 0.02s; }
+.top h1 { animation-delay: 0.08s; }
+.top .lede { animation-delay: 0.14s; }
+.toolbar { animation-delay: 0.22s; }
+.countries-toggle { animation-delay: 0.28s; }
+.table-wrap { animation-delay: 0.34s; }
+
+/* Rows and rating bars re-animate on every filter / sort */
+tbody tr { animation: rowIn 0.38s var(--ease) backwards; animation-delay: var(--d, 0ms); transition: background 0.15s; }
+tbody tr td:first-child { box-shadow: inset 0 0 0 var(--blue); transition: box-shadow 0.2s var(--ease); }
+tbody tr:hover td:first-child { box-shadow: inset 3px 0 0 var(--blue); }
+.rating span { transform-origin: bottom; }
+.rating span.on { animation: barIn 0.45s var(--ease) backwards; animation-delay: calc(var(--d, 0ms) + 80ms + var(--k, 0) * 45ms); }
+.rating span { transition: background 0.2s; }
+tbody tr:hover .rating span.on { background: #0a6fd6; }
+
+/* Counter */
+.count.tick { animation: tick 0.3s var(--ease); }
+
+/* Chips and buttons */
+.chip { transition: background 0.18s var(--ease), border-color 0.18s var(--ease), color 0.18s var(--ease), transform 0.12s var(--ease), box-shadow 0.18s var(--ease); }
+.chip:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(20, 33, 61, 0.08); }
+.chip:active { transform: scale(0.94); }
+.link-btn { transition: opacity 0.15s, transform 0.12s; }
+.link-btn:active { transform: scale(0.94); }
+
+/* Search grows on focus */
+input[type="search"] { transition: flex-basis 0.3s var(--ease), border-color 0.15s, box-shadow 0.15s; }
+input[type="search"]:focus { flex-basis: 340px; }
+
+/* Header cells */
+thead th { transition: color 0.15s; }
+.sort-icon { display: inline-block; transition: opacity 0.15s, transform 0.25s var(--ease); }
+th.sorted .sort-icon { transform: scale(1.15); }
+thead { transition: box-shadow 0.25s; }
+body.scrolled thead { box-shadow: 0 6px 12px -8px rgba(20, 33, 61, 0.25); }
+
+/* Country panel slides open */
+.countries-toggle {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  margin-top: 0.9rem; padding: 0.2rem 0;
+  background: none; border: none; cursor: pointer;
+  font: inherit; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  transition: color 0.15s;
+}
+.countries-toggle:hover { color: var(--blue); }
+.chev { display: inline-block; font-size: 0.7rem; transition: transform 0.3s var(--ease); }
+.countries.open .chev { transform: rotate(90deg); }
+#country-count { color: var(--blue); }
+.countries-body { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.4s var(--ease), opacity 0.3s; }
+.countries.open .countries-body { grid-template-rows: 1fr; opacity: 1; }
+.countries-inner { overflow: hidden; }
+.countries-inner .slicer { padding-top: 0.6rem; }
+
+/* Empty state */
+.empty { animation: fadeUp 0.4s var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
