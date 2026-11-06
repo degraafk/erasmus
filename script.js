@@ -24,7 +24,7 @@ function buildSlicers() {
 
   const mesesOpts = [...new Set(data.map(d => d.meses))].sort((a, b) => a - b);
   document.getElementById("slicer-meses").innerHTML = mesesOpts.map(m =>
-    `<span class="chip" data-group="meses" data-value="${m}">${m} months</span>`
+    `<span class="chip" data-group="meses" data-value="${m}">${m} mo</span>`
   ).join("");
 
   document.querySelectorAll(".chip").forEach(chip => {
@@ -41,6 +41,13 @@ function buildSlicers() {
       applyFilters();
     });
   });
+}
+
+function clearAll() {
+  Object.values(active).forEach(set => set.clear());
+  document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+  document.getElementById("search").value = "";
+  applyFilters();
 }
 
 function clearSlicer(group) {
@@ -61,6 +68,8 @@ function applyFilters() {
     }
     return true;
   });
+  const cc = active.country.size;
+  document.getElementById("country-count").textContent = cc ? `(${cc})` : "";
   sortData();
   render();
 }
@@ -79,7 +88,12 @@ function sortData() {
 function render() {
   const tbody = document.getElementById("tbody");
   const empty = document.getElementById("empty");
-  document.querySelectorAll("th").forEach(th => th.classList.toggle("sorted", th.dataset.key === sortKey));
+  document.getElementById("count").textContent = `${filtered.length} of ${data.length} destinations`;
+  document.querySelectorAll("th[data-key]").forEach(th => {
+    const on = th.dataset.key === sortKey;
+    th.classList.toggle("sorted", on);
+    th.querySelector(".sort-icon").textContent = on ? (sortAsc ? "↑" : "↓") : "↕";
+  });
   if (filtered.length === 0) {
     tbody.innerHTML = "";
     empty.style.display = "block";

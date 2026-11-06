@@ -3,37 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exchange Destinations</title>
+<title>Exchange destinations</title>
 <link rel="stylesheet" href="style.css">
 <base target="_blank">
 </head>
 <body>
-  <header>
-    <h1>Exchange Destinations</h1>
-    <p>Derecho &amp; Economía — ratings re-researched Nov 2026 (QS/THE 2026, enrollment data, Erasmus city rankings, forums)</p>
+  <header class="top">
+    <div class="wrap">
+      <p class="eyebrow">Derecho &amp; Economía · UC3M · 2026–27</p>
+      <h1>Where to go on exchange?</h1>
+      <p class="lede">Every destination rated on lifestyle, size, city life, difficulty and prestige, with the number of UC3M plazas at each university and in each city.</p>
+    </div>
   </header>
 
-  <div class="container">
-    <div class="filters">
-      <div class="filter-group">
-        <label for="search">Search</label>
-        <input type="text" id="search" placeholder="University, city, country...">
-      </div>
-      <div class="filter-group">
-        <label>Field <button class="clear-btn" onclick="clearSlicer('field')">Clear</button></label>
-        <div class="slicer" id="slicer-field"></div>
-      </div>
-      <div class="filter-group">
-        <label>Country <button class="clear-btn" onclick="clearSlicer('country')">Clear</button></label>
-        <div class="slicer" id="slicer-country"></div>
-      </div>
-      <div class="filter-group">
-        <label>Duration <button class="clear-btn" onclick="clearSlicer('meses')">Clear</button></label>
-        <div class="slicer" id="slicer-meses"></div>
-      </div>
-    </div>
+  <main class="wrap">
+    <section class="toolbar">
+      <input type="search" id="search" placeholder="Search university, city, country…" aria-label="Search">
+      <div class="group"><span class="group-label">Field</span><div class="slicer" id="slicer-field"></div></div>
+      <div class="group"><span class="group-label">Duration</span><div class="slicer" id="slicer-meses"></div></div>
+      <button class="link-btn" onclick="clearAll()">Reset</button>
+    </section>
 
-    <p class="note">Overall = (Lifestyle + Size + City life + (6 − Difficulty) + Prestige) / 5. Less difficult counts as better. Rank is out of all destinations.<br>Plazas: <b>Entry</b> = this row (field and duration), <b>University</b> = all UC3M degrees at that university, <b>City</b> = all UC3M degrees at every university in the same city (city taken from the university code, Anexo 1 Erasmus 2026-27).</p>
+    <details class="countries">
+      <summary>Country <span id="country-count"></span></summary>
+      <div class="slicer" id="slicer-country"></div>
+    </details>
+
+    <p class="count" id="count"></p>
 
     <div class="table-wrap">
       <table>
@@ -43,19 +39,19 @@
             <th rowspan="2" data-key="city">City <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="university">University <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="field">Field <span class="sort-icon">↕</span></th>
-            <th colspan="3" class="group">Plazas</th>
-            <th rowspan="2" data-key="meses">Meses <span class="sort-icon">↕</span></th>
+            <th colspan="3" class="group-head">Plazas</th>
+            <th rowspan="2" data-key="meses">Months <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="lifestyle">Lifestyle <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="size">Size <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="citylife">City life <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="difficulty">Difficulty <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="prestige">Prestige <span class="sort-icon">↕</span></th>
             <th rowspan="2" data-key="overall">Overall <span class="sort-icon">↕</span></th>
-            <th rowspan="2" data-key="nivel">Nivel <span class="sort-icon">↕</span></th>
+            <th rowspan="2" data-key="nivel">Language <span class="sort-icon">↕</span></th>
           </tr>
           <tr class="subhead">
             <th data-key="plazas" title="Plazas for this exact entry (field and duration)">Entry <span class="sort-icon">↕</span></th>
-            <th data-key="plazasUni" title="All UC3M plazas at this university, every degree">University <span class="sort-icon">↕</span></th>
+            <th data-key="plazasUni" title="All UC3M plazas at this university, every degree">Uni <span class="sort-icon">↕</span></th>
             <th data-key="plazasCity" title="All UC3M plazas in this city, every university and degree">City <span class="sort-icon">↕</span></th>
           </tr>
         </thead>
@@ -63,7 +59,13 @@
       </table>
       <div id="empty" class="empty" style="display:none">No matching destinations</div>
     </div>
-  </div>
+
+    <footer>
+      <p><b>Overall</b> = (Lifestyle + Size + City life + (6 − Difficulty) + Prestige) / 5. Less difficult counts as better. Rank is out of all destinations.</p>
+      <p><b>Plazas:</b> Entry = this row (field and duration). Uni = all UC3M degrees at that university. City = all UC3M degrees at every university in the same city (taken from the university code, Anexo 1 Erasmus 2026–27).</p>
+      <p>Ratings re-researched Nov 2026 (QS/THE 2026, enrollment data, Erasmus city rankings, forums).</p>
+    </footer>
+  </main>
 
   <script src="uc3m-plazas.js"></script>
   <script src="data.js"></script>
